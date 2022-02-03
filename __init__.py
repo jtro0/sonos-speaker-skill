@@ -11,9 +11,9 @@ class SonosSpeaker(MycroftSkill):
     @intent_file_handler('speaker.sonos.intent')
     def handle_speaker_sonos(self, message):
         # self.speak_dialog('speaker.sonos')
-        self.log.debug("start")
-        self.log.debug(message)
-        self.log.debug("stop")
+        self.log.info("start")
+        self.log.info(message)
+        self.log.info("stop")
 
 
 def create_skill():
