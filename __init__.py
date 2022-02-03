@@ -12,7 +12,7 @@ class SonosSpeaker(MycroftSkill):
     def handle_speaker_sonos(self, message):
         # self.speak_dialog('speaker.sonos')
         self.log.info("start")
-        self.log.info(message)
+        self.log.info(message.utterance)
         self.log.info("stop")
 
 
