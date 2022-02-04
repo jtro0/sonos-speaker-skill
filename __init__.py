@@ -58,7 +58,7 @@ class SonosSpeaker(MycroftSkill):
 
         speak = requests.get(f'{self.domain}:{self.port}{self.speak_api}',
                              params={'text': message.data.get('utterance'), 'playerId': self.device_id})
-        if speak.status_code is not 200:
+        if speak.status_code is not 200 or not speak.json().get('success'):
             self.log.info("Could not speak...")
 
     # def handle_wakeword(self, message):
