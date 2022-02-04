@@ -1,7 +1,6 @@
 
 skillMetadata:
   sections:
-    - name: Sonos TTS server domain
       fields:
         - name: domain
           type: text
