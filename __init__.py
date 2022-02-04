@@ -27,6 +27,8 @@ class SonosSpeaker(MycroftSkill):
         if devices.json().get('success') and len(devices.json().get('players')) == 1:
             self.device_id = devices.json().get('players')[0].get('id')
 
+        self.log.info("Got household and device: " + self.household_id + ' ' + self.device_id)
+
 
     @intent_file_handler('speaker.sonos.intent')
     def handle_speaker_sonos(self, message):
