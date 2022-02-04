@@ -32,7 +32,11 @@ class SonosSpeaker(MycroftSkill):
     def handle_speaker_sonos(self, message):
         # self.speak_dialog('speaker.sonos')
         self.log.info('what to say: ' + message.data.get('utterance'))
-        encoded = urllib.parse.quote(message.data.get('utterance'))
+
+        speak = requests.get(f'{self.domain}:{self.port}{self.speak_api}', params={'text':message.data.get('utterance'), 'playerId':self.device_id})
+        if speak.status_code is not 200:
+            self.log.info("Could not speak...")
+
 
 
 
