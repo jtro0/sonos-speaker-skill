@@ -21,7 +21,7 @@ class SonosSpeaker(MycroftSkill):
         self.on_settings_changed()
 
         self.add_event('speak', self.handle_speaker_sonos)
-        # self.add_event('recognizer_loop:wakeword', self.handler_wakeword)
+        self.add_event('recognizer_loop:wakeword', self.handler_wakeword)
 
     def on_settings_changed(self):
         self.domain = self.settings.get('domain')
@@ -61,11 +61,11 @@ class SonosSpeaker(MycroftSkill):
         if speak.status_code is not 200:
             self.log.info("Could not speak...")
 
-    # def handle_wakeword(self, message):
-    #     chime = requests.get(f'{self.domain}:{self.port}{self.chime}',
-    #                          params={'playerId': self.device_id})
-    #     if chime.status_code is not 200:
-    #         self.log.info("Could not chime...")
+    def handle_wakeword(self, message):
+        chime = requests.get(f'{self.domain}:{self.port}{self.chime}',
+                             params={'playerId': self.device_id})
+        if chime.status_code is not 200:
+            self.log.info("Could not chime...")
 
 def create_skill():
     return SonosSpeaker()
