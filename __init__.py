@@ -9,6 +9,11 @@ class SonosSpeaker(MycroftSkill):
     def initialize(self):
         self.domain = self.settings.get('domain')
         self.port = self.settings.get('port')
+
+        if self.domain is None or self.port is None:
+            self.log.info('Could not load settings...')
+            return
+
         self.speak_api = '/api/speakText'
 
         self.add_event('speak', self.handle_speaker_sonos)
