@@ -21,7 +21,7 @@ class SonosSpeaker(MycroftSkill):
         self.on_settings_changed()
 
         self.add_event('speak', self.handle_speaker_sonos)
-        # self.add_event('recognizer_loop:wakeword', self.handler_wakeword)
+        self.add_event('recognizer_loop:wakeword', self.handler_wakeword)
 
     def on_settings_changed(self):
         self.domain = self.settings.get('domain')
