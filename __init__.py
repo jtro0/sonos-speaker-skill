@@ -61,11 +61,11 @@ class SonosSpeaker(MycroftSkill):
         if not speak.json().get('success'):
             self.log.info("Could not speak..." + speak.json().get('error'))
 
-    # def handle_wakeword(self, message):
-    #     chime = requests.get(f'{self.domain}:{self.port}{self.chime}',
-    #                          params={'playerId': self.device_id})
-    #     if chime.status_code is not 200:
-    #         self.log.info("Could not chime...")
+    def handle_wakeword(self, message):
+        chime = requests.get(f'{self.domain}:{self.port}{self.chime}',
+                             params={'playerId': self.device_id})
+        if chime.status_code is not 200:
+            self.log.info("Could not chime...")
 
 def create_skill():
     return SonosSpeaker()
