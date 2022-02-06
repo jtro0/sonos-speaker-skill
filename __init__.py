@@ -1,5 +1,5 @@
 from mycroft import MycroftSkill, intent_file_handler
-from mycroft.api import wait_while_speaking
+from mycroft.audio import wait_while_speaking
 import requests
 
 
