@@ -1,5 +1,5 @@
 from mycroft import MycroftSkill, intent_file_handler
-import urllib.parse
+from mycroft.api import wait_while_speaking
 import requests
 
 
@@ -55,7 +55,7 @@ class SonosSpeaker(MycroftSkill):
     def handle_speaker_sonos(self, message):
         # self.speak_dialog('speaker.sonos')
         self.log.info('what to say: ' + message.data.get('utterance'))
-
+        wait_while_speaking()
         speak = requests.get(f'{self.domain}:{self.port}{self.speak_api}',
                              params={'text': message.data.get('utterance'), 'playerId': self.device_id})
         if not speak.json().get('success'):
